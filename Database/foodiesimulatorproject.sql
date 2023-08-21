@@ -36,7 +36,8 @@ CREATE TABLE cuisine (
 
     cuisine_id serial,
     name varchar (50),
-    CONSTRAINT PK_cuisine PRIMARY KEY(cuisine_id)
+    CONSTRAINT PK_cuisine PRIMARY KEY(cuisine_id),
+    CONSTRAINT UQ_cuisine_name UNIQUE(name)
 );
 
 CREATE TABLE restaurant_rating (
