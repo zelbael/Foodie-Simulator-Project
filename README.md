@@ -1,6 +1,6 @@
 # Foodie-Simulator-Project
 
-Implement Database Sql -- foodiesimulatorproject.sql
+Implement database Sql -- foodiesimulatorproject.sql
 
 Member has the following attributes:
 - Member Id
