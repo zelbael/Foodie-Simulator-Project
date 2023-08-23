@@ -1,11 +1,11 @@
 package model;
 
 public class Cuisine {
-    private int cuisine_id;
+    private int cuisineId;
     private String name;
 
-    public Cuisine(int cuisine_id, String name) {
-        this.cuisine_id = cuisine_id;
+    public Cuisine(int cuisineId, String name) {
+        this.cuisineId = cuisineId;
         this.name = name;
     }
 
@@ -13,12 +13,12 @@ public class Cuisine {
         this.name = name;
     }
 
-    public int getCuisine_id() {
-        return cuisine_id;
+    public int getCuisineId() {
+        return cuisineId;
     }
 
-    public void setCuisine_id(int cuisine_id) {
-        this.cuisine_id = cuisine_id;
+    public void setCuisineId(int cuisineId) {
+        this.cuisineId = cuisineId;
     }
 
     public String getName() {
@@ -32,7 +32,7 @@ public class Cuisine {
     @Override
     public String toString() {
         return "RestaurantRating{" +
-                "cuisine_id=" + cuisine_id +
+                "cuisineId=" + cuisineId +
                 "name='" + name + '\'' +
                 '}';
     }
