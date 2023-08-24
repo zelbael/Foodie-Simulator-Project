@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/Foodie-Simulator-Project.iml" filepath="$PROJECT_DIR$/.idea/Foodie-Simulator-Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/bookmark-client-server/bookmark-client-server.iml" filepath="$PROJECT_DIR$/bookmark-client-server/bookmark-client-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/bookmark-server/controller.iml" filepath="$PROJECT_DIR$/bookmark-server/controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/spring.iml" filepath="$PROJECT_DIR$/spring/spring.iml" />
     </modules>
   </component>
 </project>

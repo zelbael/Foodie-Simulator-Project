@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/controller/pom.xml" />
         <option value="$PROJECT_DIR$/bookmark-client-server/pom.xml" />
         <option value="$PROJECT_DIR$/bookmark-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring/pom.xml" />
       </list>
     </option>
   </component>

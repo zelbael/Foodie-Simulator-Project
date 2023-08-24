@@ -1,97 +1,104 @@
 package exception;
 
+import model.Restaurant;
 
-@Component
+import java.util.ArrayList;
+import java.util.List;
+
+private final JdbcTemplate jdbcTemplate;
+
+public JdbcRestaurantDao(DataSource dataSource) {jdbcTemplate = new JdbcTemplate(dataSource)};
+
 public class JdbcRestaurantDao implements RestaurantDAO {
 
-    private final JdbcTemplate jdbcTemplate;
+    String generalSql = "SELECT restaurantId, name, address1, address2, city, state, zipCode FROM restaurant";
 
-    public JdbcRestaurantDao(Datasource datasource) {jdbcTemplate = new jdbcTemplate = new JdbcTemplate(dataSource);}
+    @Override
+    public Restaurant getRestaurantById(int restaurantId) {
+        Restaurant restaurant = null;
+        String sql = "SELECT restaurantId, name, address1, address2, city, state, zipCode FROM restaurant" +
+                "WHERE restaurantId = ?";
 
-    public Restaurant getRestaurantById(int restaurantId);
-
-    /*
-    Get all restaurants from the datastore ordered alphabetically by name.
-
-    @return List of all Restaurant objects, or an empty list if no Restaurants are found.
-    */
-
-    List<Restaurant> getRestaurants();
-
-    /*
-    Get all restaurants from the datastore for a specified user.
-    Restaurants are ordered alphabetically by name.
-
-    @param memberId the id of the member
-    @return List of all the Restaurant members associated to the user, or an empty list if none are found.
-     */
-
-    List<Restaurant> getRestaurantByMemberId(int memberId);
-
-    /*
-    Get all public restaurants from the datastore that are associated to a specific user.
-    Restaurants are ordered alphabetically by name.
-
-    @param memberId the id of the user
-    @return List of all the public restaurant objects associated to the user, or an empty list if none are found.
-     */
-
-    List<Restaurant> getPublicRestaurantByMemberId(int memberId);
-
-    /*
-    Get all restaurants from the datastore that are marked as public.
-    Restaurants are ordered alphabetically by name.
-
-    @return List of all the public Restaurant objects, or an empty list if none are found.
-     */
-
-    List<Restaurant> getPublicRestaurants();
-
-    /*
-    Get a list of restaurants from the datastore that are marked as flagged.
-    Restaurants are ordered alphabetically by name.
-
-    @return List of all the flagged restaurant objects, or an empty list if none are found.
-     */
-
-    List<Restaurant> getFlaggedRestaurant();
-
-    /*
-    Gets all bookmarks from the datastore that contain the filter criteria in either the name, cuisine, rating, or member.
-
-    @param searchTerm the string to filter by
-    @param publicOnly true if only public restaurants should be included, false otherwise
-    @param useWildCard true if the searchTerm is wrapped by SQL wild card characters
-    @return List of the filtered restaurant objects, or an empty list is none are found
-     */
-
-    List<Restaurant> filterRestaurant(String searchTerm, boolean publicOnly, boolean useWildCard);
-
-    /*
-    Adds a new restaurant to the datastore.
-
-    @param newRestaurant the Restaurant object to add
-    @return the added Restaurant object with its new id and any default values filled in
-     */
-
-    Restaurant createRestaurant(Restaurant newRestaurant);
-
-    /*
-    Removes a restaurant and any member associations from the bookstore.
-
-    @param restaurantId The id of the Restaurant to remove. If the id is not found, no error will occur.
-     */
-
-    int deleteRestaurantById(int restaurantId);
-
-    /*
-    Update a restaurant in the bookstore.
-    Only the name, address1, address2, city, state, zipcode.
-
-    @param modifiedRestaurant the Restaurant object to update
-     */
-
-    Restaurant updateRestaurant(Restaurant modifiedRestaurant);
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurantId);
+            if (results.next()) {
+                restaurant = mapRowToRestaurant(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return restaurant;
+    }
 
 
+    @Override
+    public List<Restaurant> getRestaurants() {
+        List<Restaurant> restaurants = new ArrayList<>();
+
+        try {
+            String sql = generalSql + "ORDER BY name;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+            while (results.next()) {
+                Restaurant restaurant = mapRowToRestaurant(results);
+                restaurants.add(restaurant);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return restaurants;
+    }
+
+    @Override
+    public List<Restaurant> getRestaurantByMemberId(int memberId) {
+        return null;
+    }
+
+    @Override
+    public List<Restaurant> getPublicRestaurantByMemberId(int memberId) {
+        return null;
+    }
+
+    @Override
+    public List<Restaurant> getPublicRestaurants() {
+        return null;
+    }
+
+    @Override
+    public List<Restaurant> getFlaggedRestaurant() {
+        return null;
+    }
+
+    @Override
+    public List<Restaurant> filterRestaurant(String searchTerm, boolean publicOnly, boolean useWildCard) {
+        return null;
+    }
+
+    @Override
+    public Restaurant createRestaurant(Restaurant newRestaurant) {
+        return null;
+    }
+
+    @Override
+    public int deleteRestaurantById(int restaurantId) {
+        return 0;
+    }
+
+    @Override
+    public Restaurant updateRestaurant(Restaurant modifiedRestaurant) {
+        return null;
+    }
+
+    private Restaurant mapRowToRestaurant(SqlRowSet rs) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestaurantId(rs.getInt("restaurantId"));
+        restaurant.setName(rs.getString("name"));
+        restaurant.setAddress1(rs.getString("address1"));
+        restaurant.setAddress2(rs.getString("address2"));
+        restaurant.setCity(rs.getString("city"));
+        restaurant.setState(rs.getString("state"));
+        restaurant.setZipCode(rs.getString("zipCode"));
+        restaurant.setCuisineId(rs.getInt("cuisineId"));
+        return restaurant;
+    }
 }
