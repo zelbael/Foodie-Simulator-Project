@@ -57,9 +57,6 @@ CREATE TABLE restaurant_cuisine (
 );
 
 
-
-
-
 COMMIT TRANSACTION;
 
 
