@@ -27,8 +27,8 @@ CREATE TABLE restaurant (
 CREATE TABLE rating (
 
     rating_id serial,
-    thumbs_up boolean NOT NULL,
-    thumbs_down boolean NOT NULL,
+    is_thumbs_up boolean NOT NULL,
+    is_thumbs_down boolean NOT NULL,
     CONSTRAINT PK_ratings PRIMARY KEY(rating_id)
 );
 

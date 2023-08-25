@@ -1,35 +1,35 @@
 package model;
 
 public class RestaurantCuisine {
-    private int restaurant_id;
-    private int cuisine_id;
+    private int restaurantId;
+    private int cuisineId;
 
-    public RestaurantCuisine(int restaurant_id, int cuisine_id) {
-        this.restaurant_id = restaurant_id;
-        this.cuisine_id = cuisine_id;
+    public RestaurantCuisine(int restaurantId, int cuisineId) {
+        this.restaurantId = restaurantId;
+        this.cuisineId = cuisineId;
     }
 
-    public int getRestaurant_id() {
-        return restaurant_id;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant_id(int restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public int getCuisine_id() {
-        return cuisine_id;
+    public int getCuisineId() {
+        return cuisineId;
     }
 
-    public void setCuisine_id(int cuisine_id) {
-        this.cuisine_id = cuisine_id;
+    public void setCuisineId(int cuisineId) {
+        this.cuisineId = cuisineId;
     }
 
     @Override
     public String toString() {
         return "RestaurantCuisine{" +
-                "restaurant_id=" + restaurant_id +
-                "cuisine_id=" + cuisine_id + '\'' +
+                "restaurantId=" + restaurantId +
+                "cuisineId=" + cuisineId + '\'' +
                 '}';
     }
 }

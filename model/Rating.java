@@ -1,45 +1,45 @@
 package model;
 
 public class Rating {
-    private int rating_id;
-    private boolean thumbs_up;
-    private boolean thumbs_down;
+    private int ratingId;
+    private boolean isThumbsUp;
+    private boolean isThumbsDown;
 
-    public Rating(boolean thumbs_up, boolean thumbs_down) {
-        this.thumbs_up = thumbs_up;
-        this.thumbs_down = thumbs_down;
+    public Rating(boolean isThumbsUp, boolean isThumbsDown) {
+        this.isThumbsUp = isThumbsUp;
+        this.isThumbsDown = isThumbsDown;
     }
 
-    public int getRating_id() {
-        return rating_id;
+    public int getRatingId() {
+        return ratingId;
     }
 
-    public void setRating_id(int rating_id) {
-        this.rating_id = rating_id;
+    public void setRatingId(int ratingId) {
+        this.ratingId = ratingId;
     }
 
-    public boolean isThumbs_up() {
-        return thumbs_up;
+    public boolean isThumbsUp() {
+        return isThumbsUp;
     }
 
-    public void setThumbs_up(boolean thumbs_up) {
-        this.thumbs_up = thumbs_up;
+    public void setThumbsUp(boolean thumbsUp) {
+        isThumbsUp = thumbsUp;
     }
 
-    public boolean isThumbs_down() {
-        return thumbs_down;
+    public boolean isThumbsDown() {
+        return isThumbsDown;
     }
 
-    public void setThumbs_down(boolean thumbs_down) {
-        this.thumbs_down = thumbs_down;
+    public void setThumbsDown(boolean thumbsDown) {
+        isThumbsDown = thumbsDown;
     }
 
     @Override
     public String toString() {
         return "Rating{" +
-                "rating_id=" + rating_id +
-                ", thumbs_up='" + thumbs_up + '\'' +
-                ", thumbs_down='" + thumbs_down +
+                "ratingId=" + ratingId +
+                ", isThumbsUp='" + isThumbsUp + '\'' +
+                ", isThumbsDown='" + isThumbsDown +
                 '}';
     }
 }
