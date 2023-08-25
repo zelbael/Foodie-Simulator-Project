@@ -1,4 +1,4 @@
-package exception;
+package dao;
 
 public interface RatingDAO {
 }

@@ -1,4 +1,4 @@
-package exception;
+package dao;
 
 import model.Restaurant;
 

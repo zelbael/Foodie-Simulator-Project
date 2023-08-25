@@ -1,5 +1,6 @@
-package exception;
+package dao;
 
+import exception.DaoException;
 import model.Restaurant;
 
 import java.util.ArrayList;
